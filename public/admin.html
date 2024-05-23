@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Warhammer 40K Admin</title>
+  <title>Table Top Timer Admin</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="admin-container">
     <div class="admin-panel">
+      <div id="timer-container">
+         <div id="timer-display">00:00:00</div>
+      </div>
       <input type="file" id="bg-image-input" accept="image/*" style="display: none;">
       <button onclick="document.getElementById('bg-image-input').click()">Upload Background</button>
       <button onclick="enterFullScreen()">Full Screen</button>
