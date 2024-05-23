@@ -47,10 +47,13 @@ To run this project locally, follow these steps:
 ## Screenshots
 
 ### Timer Display
-![Timer Display](path/to/timer-display-screenshot.png)
+![Timer Display](Screenshots/Client_Side_View.png)
+
+### Login Page
+![Login_Page](Screenshots/Admin_Login_Side.png)
 
 ### Admin Panel
-![Admin Panel](path/to/admin-panel-screenshot.png)
+![Admin Panel](Screenshots/Admin_Page_View.png)
 
 ## Usage
 
