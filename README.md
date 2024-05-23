@@ -55,6 +55,9 @@ To run this project locally, follow these steps:
 ### Admin Panel
 ![Admin Panel](Screenshots/Admin_Page_View.png)
 
+### Admin Panel with Timer
+![Admin Panel_with_timer](Screenshots/Admin_page_live_timer_view.png)
+
 ## Usage
 
 - **Timer Display**: Displays the countdown timer for players to keep track of their game time.
