@@ -1,0 +1,118 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover !important; /* Ensures the background covers the entire viewport */
+  background-repeat: no-repeat !important; /* Prevents the background from repeating */
+  background-position: center center !important; /* Centers the background image */
+  overflow: hidden; /* Prevents scrolling */
+  font-family: 'Arial', sans-serif; /* Modern font */
+  position: relative; /* Needed for absolute positioning of buttons */
+}
+
+.admin-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.admin-panel {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px; /* Padding inside the panel */
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between buttons */
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  width: 300px; /* Fixed width for the panel */
+}
+
+.admin-panel button {
+  width: 100%;
+  padding: 10px 20px;
+  font-size: 1.1em; /* Slightly larger font size */
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #333; /* Dark background for buttons */
+  color: white;
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+}
+
+.admin-panel button:hover {
+  background-color: #555; /* Lighter background on hover */
+}
+
+.admin-panel button:active {
+  background-color: #777; /* Even lighter background on active state */
+}
+
+.admin-panel input[type="file"] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .admin-panel {
+    width: 90%; /* Responsive width for smaller screens */
+  }
+
+  .admin-panel button {
+    font-size: 1em; /* Adjust button size for smaller screens */
+  }
+}
+
+#timer-container {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+  background: none; /* Removes the background */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically */
+}
+
+#timer-display {
+  font-size: 20vw; /* Responsive font size */
+  width: 75vw; /* 75% of the viewport width */
+  white-space: nowrap; /* Prevents text from wrapping */
+  text-align: center; /* Centers text within its container */
+}
+
+#hamburger-menu {
+  position: absolute;
+  bottom: 20px; /* 20px from the bottom */
+  right: 20px; /* 20px from the right */
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000; /* Ensure it is on top */
+}
+
+#buttons-container {
+  position: absolute;
+  bottom: 70px; /* Adjust based on hamburger menu size */
+  right: 20px; /* Align with hamburger menu */
+  display: none; /* Hide by default */
+  flex-direction: column;
+  gap: 10px; /* Space between buttons */
+}
+
+#buttons-container button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+}
