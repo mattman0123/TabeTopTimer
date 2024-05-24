@@ -120,3 +120,31 @@ function toggleButtons() {
     document.getElementById('play-button').style.display = 'none';
   }
 }
+
+// QR Code Generation
+// QR Code Generation without Logo
+function generateQRCode() {
+  const hostname = document.getElementById('hostname').value;
+  
+  if (hostname) {
+    const qrCodeUrl = `http://${hostname}`;
+    const qrCodeContainer = document.getElementById('qr-code-container');
+
+    import('qrcode').then(QRCode => {
+      QRCode.toDataURL(qrCodeUrl, {
+        width: 300,
+        margin: 1,
+        color: {
+          dark: '#000000',
+          light: '#ffffff'
+        }
+      }, function (err, url) {
+        if (err) throw err;
+        qrCodeContainer.innerHTML = `<img src="${url}" alt="QR Code">`;
+      });
+    });
+  } else {
+    alert('Please provide the hostname.');
+  }
+}
+

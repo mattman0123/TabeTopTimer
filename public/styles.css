@@ -165,3 +165,14 @@ body, html {
   background-color: #777; /* Even lighter background on active state */
 }
 
+#qr-code-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#qr-code-container img {
+  max-width: 100%;
+  height: auto;
+}

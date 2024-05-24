@@ -13,7 +13,8 @@ $packages = @(
     "path",
     "fs",
     "express-session",
-    "body-parser"
+    "body-parser",
+    "qrcode"
 )
 
 # Install the packages

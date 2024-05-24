@@ -12,13 +12,21 @@
       <div id="timer-container">
          <div id="timer-display">00:00:00</div>
       </div>
-      <input type="file" id="bg-image-input" accept="image/*">
+      <input type="file" id="bg-image-input" accept="image/*" style="display: none;">
       <button onclick="document.getElementById('bg-image-input').click()">Upload Background</button>
       <button onclick="enterFullScreen()">Full Screen</button>
       <button id="start-button" onclick="toggleTimer()">Start</button>
       <button id="pause-button" onclick="pauseTimer()" style="display: none;">Pause</button>
       <button id="play-button" onclick="resumeTimer()" style="display: none;">Play</button>
       <button onclick="resetTimer()">Reset</button>
+
+      <!-- QR Code Generation Section -->
+      <div id="qr-code-section">
+        <h3>Generate QR Code</h3>
+        <input type="text" id="hostname" placeholder="Enter Hostname">
+        <button onclick="generateQRCode()">Generate QR Code</button>
+        <div id="qr-code-container"></div>
+      </div>
     </div>
   </div>
   <script src="/socket.io/socket.io.js"></script>
