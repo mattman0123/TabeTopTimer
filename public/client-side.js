@@ -54,6 +54,7 @@ function resumeTimer() {
     socket.emit('resumeTimer');
   }
 }
+
 function pauseTimer() {
   if (running && remainingTime > 0) {
     socket.emit('pauseTimer');
@@ -105,11 +106,15 @@ function toggleMenu() {
 }
 
 function toggleButtons() {
-  if (running && remainingTime > 0) {
+  if (running) {
     document.getElementById('start-button').style.display = 'none';
-    document.getElementById('play-button').style.display = 'inline-block';
     document.getElementById('pause-button').style.display = 'inline-block';
-  }else {
+    document.getElementById('play-button').style.display = 'none';
+  } else if (remainingTime > 0) {
+    document.getElementById('start-button').style.display = 'none';
+    document.getElementById('pause-button').style.display = 'none';
+    document.getElementById('play-button').style.display = 'inline-block';
+  } else {
     document.getElementById('start-button').style.display = 'inline-block';
     document.getElementById('pause-button').style.display = 'none';
     document.getElementById('play-button').style.display = 'none';
