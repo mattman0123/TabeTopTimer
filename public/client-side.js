@@ -41,12 +41,18 @@ socket.on('backgroundUpdate', (imageUrl) => {
 });
 
 function toggleTimer() {
-  const timeString = prompt('Enter countdown time in HH:MM:SS format:');
-  if (timeString) {
-    const [hours, minutes, seconds] = timeString.split(':').map(Number);
-    const initialTime = (hours * 3600 + minutes * 60 + seconds) * 1000;
-    socket.emit('startTimer', initialTime);
+  const timeInput = document.getElementById('time-input').value.trim();
+  const timePattern = /^(\d{1,2}):([0-5]\d):([0-5]\d)$/;
+
+  if (!timePattern.test(timeInput)) {
+    alert('Please enter a valid time in HH:MM:SS format.');
+    return;
   }
+
+  const [_, hours, minutes, seconds] = timeInput.match(timePattern);
+  const initialTime = (parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds)) * 1000;
+
+  socket.emit('startTimer', initialTime);
 }
 
 function resumeTimer() {
@@ -121,30 +127,18 @@ function toggleButtons() {
   }
 }
 
-// QR Code Generation
-// QR Code Generation without Logo
 function generateQRCode() {
-  const hostname = document.getElementById('hostname').value;
-  
-  if (hostname) {
-    const qrCodeUrl = `http://${hostname}`;
-    const qrCodeContainer = document.getElementById('qr-code-container');
-
-    import('qrcode').then(QRCode => {
-      QRCode.toDataURL(qrCodeUrl, {
-        width: 300,
-        margin: 1,
-        color: {
-          dark: '#000000',
-          light: '#ffffff'
-        }
-      }, function (err, url) {
-        if (err) throw err;
-        qrCodeContainer.innerHTML = `<img src="${url}" alt="QR Code">`;
-      });
-    });
-  } else {
-    alert('Please provide the hostname.');
+  const hostname = document.getElementById('hostname').value.trim();
+  if (!hostname) {
+    alert('Please enter a valid hostname.');
+    return;
   }
-}
 
+  const url = `http://${hostname}`;
+  const qrcodeCanvas = document.getElementById('qrcode');
+  
+  QRCode.toCanvas(qrcodeCanvas, url, function (error) {
+    if (error) console.error(error);
+    console.log('QR code generated!');
+  });
+}
