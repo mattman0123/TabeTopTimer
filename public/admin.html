@@ -10,17 +10,18 @@
   <div class="admin-container">
     <div class="admin-panel">
       <div id="timer-container">
-         <div id="timer-display">00:00:00</div>
+        <div id="timer-display">00:00:00</div>
       </div>
       <input type="text" id="time-input" placeholder="HH:MM:SS">
-      <button id="start-button" onclick="toggleTimer()">Start Timer</button>
+      <button onclick="toggleTimer()">Start Timer</button>
       <button id="pause-button" onclick="pauseTimer()" style="display: none;">Pause</button>
       <button id="play-button" onclick="resumeTimer()" style="display: none;">Play</button>
       <button onclick="resetTimer()">Reset</button>
+      <label for="bg-image-input">Background Image:</label><br>
+      <input type="file" id="bg-image-input" accept="image/*">
       <input type="text" id="hostname" placeholder="Enter Hostname">
       <button onclick="generateQRCode()">Generate QR Code</button>
       <canvas id="qrcode"></canvas>
-      <input type="file" id="bg-image-input" accept="image/*" >
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
