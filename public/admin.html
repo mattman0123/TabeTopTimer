@@ -12,15 +12,18 @@
       <div id="timer-container">
          <div id="timer-display">00:00:00</div>
       </div>
-      <input type="file" id="bg-image-input" accept="image/*" style="display: none;">
-      <button onclick="document.getElementById('bg-image-input').click()">Upload Background</button>
-      <button onclick="enterFullScreen()">Full Screen</button>
-      <button id="start-button" onclick="toggleTimer()">Start</button>
+      <input type="text" id="time-input" placeholder="HH:MM:SS">
+      <button id="start-button" onclick="toggleTimer()">Start Timer</button>
       <button id="pause-button" onclick="pauseTimer()" style="display: none;">Pause</button>
       <button id="play-button" onclick="resumeTimer()" style="display: none;">Play</button>
       <button onclick="resetTimer()">Reset</button>
+      <input type="text" id="hostname" placeholder="Enter Hostname">
+      <button onclick="generateQRCode()">Generate QR Code</button>
+      <canvas id="qrcode"></canvas>
+      <input type="file" id="bg-image-input" accept="image/*" >
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="client-side.js"></script>
 </body>

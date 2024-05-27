@@ -41,12 +41,18 @@ socket.on('backgroundUpdate', (imageUrl) => {
 });
 
 function toggleTimer() {
-  const timeString = prompt('Enter countdown time in HH:MM:SS format:');
-  if (timeString) {
-    const [hours, minutes, seconds] = timeString.split(':').map(Number);
-    const initialTime = (hours * 3600 + minutes * 60 + seconds) * 1000;
-    socket.emit('startTimer', initialTime);
+  const timeInput = document.getElementById('time-input').value.trim();
+  const timePattern = /^(\d{1,2}):([0-5]\d):([0-5]\d)$/;
+
+  if (!timePattern.test(timeInput)) {
+    alert('Please enter a valid time in HH:MM:SS format.');
+    return;
   }
+
+  const [_, hours, minutes, seconds] = timeInput.match(timePattern);
+  const initialTime = (parseInt(hours) * 3600 + parseInt(minutes) * 60 + parseInt(seconds)) * 1000;
+
+  socket.emit('startTimer', initialTime);
 }
 
 function resumeTimer() {
@@ -54,6 +60,7 @@ function resumeTimer() {
     socket.emit('resumeTimer');
   }
 }
+
 function pauseTimer() {
   if (running && remainingTime > 0) {
     socket.emit('pauseTimer');
@@ -105,13 +112,33 @@ function toggleMenu() {
 }
 
 function toggleButtons() {
-  if (running && remainingTime > 0) {
+  if (running) {
     document.getElementById('start-button').style.display = 'none';
-    document.getElementById('play-button').style.display = 'inline-block';
     document.getElementById('pause-button').style.display = 'inline-block';
-  }else {
+    document.getElementById('play-button').style.display = 'none';
+  } else if (remainingTime > 0) {
+    document.getElementById('start-button').style.display = 'none';
+    document.getElementById('pause-button').style.display = 'none';
+    document.getElementById('play-button').style.display = 'inline-block';
+  } else {
     document.getElementById('start-button').style.display = 'inline-block';
     document.getElementById('pause-button').style.display = 'none';
     document.getElementById('play-button').style.display = 'none';
   }
+}
+
+function generateQRCode() {
+  const hostname = document.getElementById('hostname').value.trim();
+  if (!hostname) {
+    alert('Please enter a valid hostname.');
+    return;
+  }
+
+  const url = `http://${hostname}`;
+  const qrcodeCanvas = document.getElementById('qrcode');
+  
+  QRCode.toCanvas(qrcodeCanvas, url, function (error) {
+    if (error) console.error(error);
+    console.log('QR code generated!');
+  });
 }
