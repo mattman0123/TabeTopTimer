@@ -43,6 +43,7 @@ To run this project locally, follow these steps:
 - **Multer**: Middleware for handling `multipart/form-data` for file uploads.
 - **HTML/CSS**: Markup and styling for the frontend.
 - **JavaScript**: Client-side scripting.
+- **QRCODE**: QR Code generator.
 
 ## Screenshots
 
@@ -62,6 +63,7 @@ To run this project locally, follow these steps:
 
 - **Timer Display**: Displays the countdown timer for players to keep track of their game time.
 - **Admin Panel**: Allows authorized users to set the countdown time, start/pause/reset the timer, and upload custom background images.
+- **QR Code**: Create a QR Code for users to access the timer from anywhere on LAN.
 
 ## Contributing
 
