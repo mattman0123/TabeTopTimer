@@ -5,12 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Table Top Timer Login</title>
   <link rel="stylesheet" href="styles.css">
+  <script>
+    document.addEventListener("keypress", function(event) {
+          if (event.key === "Enter") {
+            event.preventDefault();
+            document.getElementById("login-button").click();
+          }
+        });
+  </script>
 </head>
 <body>
   <div id="login-container">
     <input type="text" id="username" placeholder="Username">
     <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
+    <button id="login-button" onclick="login()">Login</button>
   </div>
   <script src="login.js"></script>
 </body>

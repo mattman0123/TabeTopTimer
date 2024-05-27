@@ -11,6 +11,7 @@ function updateTimerDisplay() {
     clearInterval(timerInterval);
     running = false;
     toggleButtons();
+    displayCustomMessage(); // Call the function to display the custom message
     return;
   }
 
@@ -19,6 +20,26 @@ function updateTimerDisplay() {
   const hours = Math.floor(remainingTime / (1000 * 60 * 60));
   document.getElementById('timer-display').innerText =
     `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+function displayCustomMessage() {
+  const messageContainer = document.createElement('div');
+  messageContainer.id = 'custom-message';
+  messageContainer.innerText = 'Time is up!';
+  messageContainer.style.position = 'absolute';
+  messageContainer.style.top = '50%';
+  messageContainer.style.left = '50%';
+  messageContainer.style.transform = 'translate(-50%, -50%)';
+  messageContainer.style.padding = '20px';
+  messageContainer.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+  messageContainer.style.color = 'white';
+  messageContainer.style.fontSize = '2em';
+  messageContainer.style.borderRadius = '10px';
+  document.body.appendChild(messageContainer);
+
+  setTimeout(() => {
+    document.body.removeChild(messageContainer);
+  }, 5000); // Remove message after 5 seconds
 }
 
 socket.on('timerUpdate', (state) => {
@@ -81,7 +102,6 @@ function startTimerInterval() {
     updateTimerDisplay();
   }, 1000);
 }
-
 document.getElementById('bg-image-input').addEventListener('change', function(event) {
   const file = event.target.files[0];
   const formData = new FormData();
