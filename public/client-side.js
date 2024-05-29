@@ -11,7 +11,7 @@ function updateTimerDisplay() {
     clearInterval(timerInterval);
     running = false;
     toggleButtons();
-    displayCustomMessage(); // Call the function to display the custom message
+    // displayCustomMessage(); // Call the function to display the custom message
     return;
   }
 
